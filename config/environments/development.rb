@@ -26,7 +26,21 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  config.action_mailer.default_url_options = { :host => 'localhost' }
+  # config.action_mailer.default_url_options = { :host => 'https://bfb951cb54a943e5b3de7bff9e3ca2a4.vfs.cloud9.us-east-1.amazonaws.com' }
+  config.action_mailer.default_url_options = { host: 'https://bfb951cb54a943e5b3de7bff9e3ca2a4.vfs.cloud9.us-east-1.amazonaws.com' }
+  
+   # Mailgun Integration
+  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.mailgun.org',
+    port: 2525,
+    domain: 'sandbox849ca54dc98b42888da6976e40db3c35.mailgun.org',
+    authentication: 'plain',
+    user_name: 'postmaster@sandbox849ca54dc98b42888da6976e40db3c35.mailgun.org',
+    password: '20e436f9190a67c9fbb9b852ab52cae8'
+  }
+  
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
